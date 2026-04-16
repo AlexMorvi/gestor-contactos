@@ -7,7 +7,12 @@
 
   <ng-template #listTemplate>
     <div class="grid-container">
-      <app-contact-card *ngFor="let c of contacts" [contact]="c"></app-contact-card>
+      <app-contact-card
+        *ngFor="let c of contacts"
+        [contact]="c"
+        (favoriteToggled)="toggleFavorite($event)"
+        (statusToggled)="toggleStatus($event)"
+      ></app-contact-card>
     </div>
   </ng-template>
 </div>

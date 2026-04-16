@@ -1,12 +1,26 @@
-<article class="card" *ngIf="contact">
+<article class="card" *ngIf="contact" [ngClass]="{ 'card-favorite': contact.favorite }">
   <h3>{{ contact.name }}</h3>
   <p>{{ contact.email }}</p>
   <p>
     Estado:
-    <span class="status" [class.active]="contact.status === 'activo'">
+    <span
+      class="status"
+      [ngClass]="{
+        'status-active': contact.status === 'activo',
+        'status-inactive': contact.status === 'inactivo',
+        'status-away': contact.status === 'ausente'
+      }"
+    >
       {{ contact.status }}
     </span>
   </p>
 
   <p *ngIf="contact.favorite" class="favorite">Favorito</p>
+
+  <div class="actions">
+    <button type="button" (click)="onFavoriteClick()">
+      {{ contact.favorite ? 'Quitar favorito' : 'Marcar favorito' }}
+    </button>
+    <button type="button" (click)="onStatusClick()">Cambiar estado</button>
+  </div>
 </article>

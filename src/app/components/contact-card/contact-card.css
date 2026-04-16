@@ -5,6 +5,11 @@
 	background: #ffffff;
 }
 
+.card-favorite {
+	border-color: #c89200;
+	box-shadow: 0 0 0 2px #f8e6b6;
+}
+
 .card h3 {
 	margin: 0 0 0.35rem;
 }
@@ -17,11 +22,37 @@
 	font-weight: 600;
 }
 
-.status.active {
+.status-active {
 	color: #1d7f48;
+}
+
+.status-inactive {
+	color: #8c2635;
+}
+
+.status-away {
+	color: #a36b00;
 }
 
 .favorite {
 	color: #8f5f00;
 	font-weight: 600;
+}
+
+.actions {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 0.8rem;
+}
+
+.actions button {
+	padding: 0.4rem 0.7rem;
+	border: 1px solid #a8b3bf;
+	border-radius: 8px;
+	background: #f6f8fa;
+	cursor: pointer;
+}
+
+.actions button:hover {
+	background: #e9edf2;
 }

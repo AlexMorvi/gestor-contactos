@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ContactCardComponent } from '../contact-card/contact-card';
+import {
+  Contact,
+  ContactCardComponent,
+  ContactStatus,
+} from '../contact-card/contact-card';
 
 @Component({
   selector: 'app-contact-list',
@@ -10,7 +14,7 @@ import { ContactCardComponent } from '../contact-card/contact-card';
   styleUrl: './contact-list.css',
 })
 export class ContactListComponent {
-  contacts = [
+  contacts: Contact[] = [
     {
       id: 1,
       name: 'Ana Gomez',
@@ -47,4 +51,26 @@ export class ContactListComponent {
       favorite: true,
     },
   ];
+
+  toggleFavorite(contactId: number): void {
+    this.contacts = this.contacts.map((contact) =>
+      contact.id === contactId
+        ? { ...contact, favorite: !contact.favorite }
+        : contact,
+    );
+  }
+
+  toggleStatus(contactId: number): void {
+    const nextStatus: Record<ContactStatus, ContactStatus> = {
+      activo: 'ausente',
+      ausente: 'inactivo',
+      inactivo: 'activo',
+    };
+
+    this.contacts = this.contacts.map((contact) =>
+      contact.id === contactId
+        ? { ...contact, status: nextStatus[contact.status] }
+        : contact,
+    );
+  }
 }
