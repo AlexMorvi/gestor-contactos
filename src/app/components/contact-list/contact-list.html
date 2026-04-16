@@ -1,11 +1,16 @@
 <div class="container">
-  <h2>Mi Lista de Contactos</h2>
+  <header class="list-header">
+    <p class="eyebrow">Agenda personal</p>
+    <h2>Mi Lista de Contactos</h2>
+    <p class="subtitle">Organiza tu red, marca favoritos y actualiza estados al instante.</p>
+  </header>
 
-  <div *ngIf="contacts.length === 0; else listTemplate">
+  <div *ngIf="contacts.length === 0; else listTemplate" class="empty-state">
     <p>No hay contactos disponibles en este momento.</p>
   </div>
 
   <ng-template #listTemplate>
+    <p class="counter">Total: {{ contacts.length }} contactos</p>
     <div class="grid-container">
       <app-contact-card
         *ngFor="let c of contacts"

@@ -1,11 +1,115 @@
 .container {
-	max-width: 960px;
+	width: min(980px, 100%);
 	margin: 0 auto;
-	padding: 1.5rem;
+	padding: clamp(1.1rem, 2.4vw, 2rem);
+	border: 1px solid var(--border-soft);
+	border-radius: 24px;
+	background: linear-gradient(170deg, var(--surface), var(--surface-soft));
+	box-shadow: var(--shadow-lg);
+	animation: rise-in 550ms ease-out both;
+}
+
+.list-header {
+	margin-bottom: 1rem;
+}
+
+.eyebrow {
+	display: inline-block;
+	padding: 0.2rem 0.6rem;
+	margin: 0;
+	border-radius: 999px;
+	font-size: 0.74rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #224b92;
+	background: #d9e7ff;
+}
+
+.list-header h2 {
+	margin: 0.5rem 0 0.2rem;
+	font-family: 'Fraunces', Georgia, serif;
+	font-size: clamp(1.55rem, 3vw, 2.1rem);
+	line-height: 1.15;
+}
+
+.subtitle {
+	margin: 0;
+	color: var(--text-muted);
+}
+
+.counter {
+	display: inline-block;
+	margin: 0 0 0.9rem;
+	padding: 0.35rem 0.75rem;
+	border-radius: 999px;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: #1e4d6e;
+	background: #dff4ff;
+}
+
+.empty-state {
+	padding: 1.15rem;
+	border: 1px dashed var(--border-soft);
+	border-radius: 14px;
+	background: #f7f9fc;
+	color: var(--text-muted);
 }
 
 .grid-container {
 	display: grid;
-	gap: 0.75rem;
-	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 1rem;
+	grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+}
+
+.grid-container app-contact-card {
+	display: block;
+	animation: card-in 420ms ease-out both;
+}
+
+.grid-container app-contact-card:nth-child(2) {
+	animation-delay: 50ms;
+}
+
+.grid-container app-contact-card:nth-child(3) {
+	animation-delay: 95ms;
+}
+
+.grid-container app-contact-card:nth-child(4) {
+	animation-delay: 140ms;
+}
+
+.grid-container app-contact-card:nth-child(5) {
+	animation-delay: 185ms;
+}
+
+@media (max-width: 640px) {
+	.container {
+		border-radius: 18px;
+	}
+}
+
+@keyframes rise-in {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes card-in {
+	from {
+		opacity: 0;
+		transform: translateY(10px) scale(0.98);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }

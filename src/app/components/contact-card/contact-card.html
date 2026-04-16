@@ -1,6 +1,9 @@
 <article class="card" *ngIf="contact" [ngClass]="{ 'card-favorite': contact.favorite }">
   <h3>{{ contact.name }}</h3>
+
   <p>{{ contact.email }}</p>
+  <p>Telefono: {{ contact.phone }}</p>
+  <p>Ciudad: {{ contact.city }}</p>
   <p>
     Estado:
     <span
