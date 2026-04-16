@@ -11,7 +11,7 @@
         'status-away': contact.status === 'ausente'
       }"
     >
-      {{ contact.status }}
+      {{ contact.status | contactStatusLabel }}
     </span>
   </p>
 

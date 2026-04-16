@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ContactStatusLabelPipe } from '../../pipes/contact-status-label.pipe';
 
 export type ContactStatus = 'activo' | 'inactivo' | 'ausente';
 
@@ -14,7 +15,7 @@ export interface Contact {
 @Component({
   selector: 'app-contact-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ContactStatusLabelPipe],
   templateUrl: './contact-card.html',
   styleUrl: './contact-card.css',
 })
