@@ -1,9 +1,19 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-contact-card',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './contact-card.html',
   styleUrl: './contact-card.css',
 })
-export class ContactCard {}
+export class ContactCardComponent {
+  @Input() contact?: {
+    id: number;
+    name: string;
+    email: string;
+    status: string;
+    favorite: boolean;
+  };
+}

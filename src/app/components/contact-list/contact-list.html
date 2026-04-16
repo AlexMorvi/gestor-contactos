@@ -1,1 +1,13 @@
-<p>contact-list works!</p>
+<div class="container">
+  <h2>Mi Lista de Contactos</h2>
+
+  <div *ngIf="contacts.length === 0; else listTemplate">
+    <p>No hay contactos disponibles en este momento.</p>
+  </div>
+
+  <ng-template #listTemplate>
+    <div class="grid-container">
+      <app-contact-card *ngFor="let c of contacts" [contact]="c"></app-contact-card>
+    </div>
+  </ng-template>
+</div>

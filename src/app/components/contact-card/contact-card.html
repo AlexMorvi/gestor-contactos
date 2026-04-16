@@ -1,1 +1,12 @@
-<p>contact-card works!</p>
+<article class="card" *ngIf="contact">
+  <h3>{{ contact.name }}</h3>
+  <p>{{ contact.email }}</p>
+  <p>
+    Estado:
+    <span class="status" [class.active]="contact.status === 'activo'">
+      {{ contact.status }}
+    </span>
+  </p>
+
+  <p *ngIf="contact.favorite" class="favorite">Favorito</p>
+</article>

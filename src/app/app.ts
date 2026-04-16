@@ -1,11 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { ContactListComponent } from './components/contact-list/contact-list';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [ContactListComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('gestor-contactos');
 }
