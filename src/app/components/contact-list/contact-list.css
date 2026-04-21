@@ -57,6 +57,43 @@
 	color: var(--text-muted);
 }
 
+.status-panel {
+	margin-top: 1.2rem;
+	padding: 0.85rem 1rem;
+	border: 1px solid var(--border-soft);
+	border-radius: 14px;
+	background: #f7fbff;
+}
+
+.status-label {
+	margin: 0;
+	font-size: 0.76rem;
+	font-weight: 700;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	color: #255f97;
+}
+
+.status-message {
+	margin: 0.35rem 0 0;
+	font-weight: 600;
+}
+
+.status-panel-activo {
+	background: #f0fff4;
+	border-color: #bbf7d0;
+}
+
+.status-panel-inactivo {
+	background: #fef2f2;
+	border-color: #fecaca;
+}
+
+.status-panel-ausente {
+	background: #fff7ed;
+	border-color: #fed7aa;
+}
+
 .grid-container {
 	display: grid;
 	gap: 1rem;

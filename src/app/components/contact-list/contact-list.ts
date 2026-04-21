@@ -80,7 +80,7 @@ export class ContactListComponent {
     },
   ];
 
-  selectedContact: Contact = this.contacts[0];
+  selectedContact: Contact | null = null;
 
   toggleFavorite(contactId: number): void {
     this.contacts = this.contacts.map((contact) =>
@@ -88,6 +88,8 @@ export class ContactListComponent {
         ? { ...contact, favorite: !contact.favorite }
         : contact,
     );
+
+    this.syncSelectedContact(contactId);
   }
 
   toggleStatus(contactId: number): void {
@@ -103,14 +105,19 @@ export class ContactListComponent {
         : contact,
     );
 
-    if (this.selectedContact.id === contactId) {
-      this.selectedContact =
-        this.contacts.find((contact) => contact.id === contactId) ??
-        this.selectedContact;
-    }
+    this.syncSelectedContact(contactId);
   }
 
   selectContact(contact: Contact): void {
     this.selectedContact = contact;
+  }
+
+  private syncSelectedContact(contactId: number): void {
+    if (!this.selectedContact || this.selectedContact.id !== contactId) {
+      return;
+    }
+
+    this.selectedContact =
+      this.contacts.find((contact) => contact.id === contactId) ?? null;
   }
 }

@@ -14,7 +14,7 @@
     <div class="grid-container">
       @for (contact of contacts; track contact.id) {
         <app-contact-card
-          [class.selected-card]="selectedContact.id === contact.id"
+          [class.selected-card]="selectedContact?.id === contact.id"
           [contact]="contact"
           (favoriteToggled)="toggleFavorite($event)"
           (statusToggled)="toggleStatus($event)"
@@ -22,6 +22,29 @@
         ></app-contact-card>
       }
     </div>
-    <app-contact-detail [contact]="selectedContact"></app-contact-detail>
+
+    @if (selectedContact) {
+      <section class="status-panel" [class]="'status-panel status-panel-' + selectedContact.status">
+        <p class="status-label">Estado actual del contacto seleccionado</p>
+
+        @switch (selectedContact.status) {
+          @case ('activo') {
+            <p class="status-message">Disponible y listo para contacto inmediato.</p>
+          }
+          @case ('inactivo') {
+            <p class="status-message">Sin actividad reciente. Conviene reactivar el contacto.</p>
+          }
+          @case ('ausente') {
+            <p class="status-message">Temporalmente no disponible.</p>
+          }
+        }
+      </section>
+
+      <app-contact-detail [contact]="selectedContact"></app-contact-detail>
+    } @else {
+      <div class="empty-state">
+        <p>Selecciona un contacto y pulsa Ver detalle para ver su informacion completa.</p>
+      </div>
+    }
   }
 </div>
