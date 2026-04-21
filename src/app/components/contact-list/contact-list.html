@@ -18,7 +18,7 @@
           [contact]="contact"
           (favoriteToggled)="toggleFavorite($event)"
           (statusToggled)="toggleStatus($event)"
-          (click)="selectContact(contact)"
+          (detailRequested)="selectContact($event)"
         ></app-contact-card>
       }
     </div>

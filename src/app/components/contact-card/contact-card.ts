@@ -25,6 +25,7 @@ export class ContactCardComponent {
   @Input({ required: true }) contact!: Contact;
   @Output() favoriteToggled = new EventEmitter<number>();
   @Output() statusToggled = new EventEmitter<number>();
+  @Output() detailRequested = new EventEmitter<Contact>();
 
   onFavoriteClick(): void {
     this.favoriteToggled.emit(this.contact.id);
@@ -32,5 +33,9 @@ export class ContactCardComponent {
 
   onStatusClick(): void {
     this.statusToggled.emit(this.contact.id);
+  }
+
+  onDetailClick(): void {
+    this.detailRequested.emit(this.contact);
   }
 }
