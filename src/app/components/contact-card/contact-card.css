@@ -72,7 +72,7 @@
 
 .actions {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	gap: 0.5rem;
 	margin-top: 0.9rem;
 }
@@ -89,16 +89,22 @@
 	transition: transform 140ms ease, filter 140ms ease, border-color 140ms ease;
 }
 
-.actions button:first-child {
+.actions button:nth-child(1) {
 	color: #6b5000;
 	background: #fff4d8;
 	border-color: #eacb81;
 }
 
-.actions button:last-child {
+.actions button:nth-child(2) {
 	color: #1d3f7f;
 	background: #e7f0ff;
 	border-color: #bdd1f9;
+}
+
+.actions button:nth-child(3) {
+	color: #14532d;
+	background: #e8fbe9;
+	border-color: #a7e4b0;
 }
 
 .actions button:hover {

@@ -49,6 +49,20 @@
 	background: #dff4ff;
 }
 
+.selection-hint {
+	margin: 0 0 0.9rem;
+	padding: 0.7rem 0.9rem;
+	border: 1px dashed #bfd6ee;
+	border-radius: 12px;
+	background: #f4f9ff;
+	color: #35556f;
+}
+
+.selection-hint p {
+	margin: 0;
+	font-size: 0.92rem;
+}
+
 .empty-state {
 	padding: 1.15rem;
 	border: 1px dashed var(--border-soft);
@@ -58,7 +72,7 @@
 }
 
 .status-panel {
-	margin-top: 1.2rem;
+	margin-top: 0;
 	padding: 0.85rem 1rem;
 	border: 1px solid var(--border-soft);
 	border-radius: 14px;
@@ -94,19 +108,52 @@
 	border-color: #fed7aa;
 }
 
+.detail-actions {
+	margin-top: 0.55rem;
+}
+
+.close-detail-btn {
+	padding: 0.45rem 0.8rem;
+	border: 1px solid #cbd5e1;
+	border-radius: 10px;
+	font-weight: 600;
+	color: #1f2937;
+	background: #ffffff;
+	cursor: pointer;
+}
+
+.close-detail-btn:hover {
+	background: #f8fafc;
+}
+
 .grid-container {
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+	align-items: start;
+}
+
+.contact-item {
+	display: grid;
+	gap: 0.7rem;
+}
+
+.inline-detail {
+	display: grid;
+	gap: 0.55rem;
+	padding: 0.7rem;
+	border-radius: 14px;
+	background: #fbfdff;
+	border: 1px solid #dbeafe;
+	animation: detail-in 220ms ease-out both;
 }
 
 .grid-container app-contact-card {
 	display: block;
 	animation: card-in 420ms ease-out both;
-	cursor: pointer;
 }
 
-.grid-container app-contact-card.selected-card {
+.contact-item app-contact-card.selected-card {
 	outline: 2px solid #3c7cbe;
 	outline-offset: 3px;
 	border-radius: 16px;
@@ -155,5 +202,17 @@
 	to {
 		opacity: 1;
 		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes detail-in {
+	from {
+		opacity: 0;
+		transform: translateY(-6px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }

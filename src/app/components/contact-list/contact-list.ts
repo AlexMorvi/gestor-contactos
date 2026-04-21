@@ -112,6 +112,10 @@ export class ContactListComponent {
     this.selectedContact = contact;
   }
 
+  clearSelectedContact(): void {
+    this.selectedContact = null;
+  }
+
   private syncSelectedContact(contactId: number): void {
     if (!this.selectedContact || this.selectedContact.id !== contactId) {
       return;
