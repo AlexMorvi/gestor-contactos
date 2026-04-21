@@ -66,6 +66,13 @@
 .grid-container app-contact-card {
 	display: block;
 	animation: card-in 420ms ease-out both;
+	cursor: pointer;
+}
+
+.grid-container app-contact-card.selected-card {
+	outline: 2px solid #3c7cbe;
+	outline-offset: 3px;
+	border-radius: 16px;
 }
 
 .grid-container app-contact-card:nth-child(2) {

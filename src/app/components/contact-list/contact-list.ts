@@ -1,15 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   Contact,
   ContactCardComponent,
   ContactStatus,
 } from '../contact-card/contact-card';
+import { ContactDetailComponent } from '../contact-detail/contact-detail';
 
 @Component({
   selector: 'app-contact-list',
   standalone: true,
-  imports: [CommonModule, ContactCardComponent],
+  imports: [ContactCardComponent, ContactDetailComponent],
   templateUrl: './contact-list.html',
   styleUrl: './contact-list.css',
 })
@@ -80,6 +80,8 @@ export class ContactListComponent {
     },
   ];
 
+  selectedContact: Contact = this.contacts[0];
+
   toggleFavorite(contactId: number): void {
     this.contacts = this.contacts.map((contact) =>
       contact.id === contactId
@@ -100,5 +102,15 @@ export class ContactListComponent {
         ? { ...contact, status: nextStatus[contact.status] }
         : contact,
     );
+
+    if (this.selectedContact.id === contactId) {
+      this.selectedContact =
+        this.contacts.find((contact) => contact.id === contactId) ??
+        this.selectedContact;
+    }
+  }
+
+  selectContact(contact: Contact): void {
+    this.selectedContact = contact;
   }
 }

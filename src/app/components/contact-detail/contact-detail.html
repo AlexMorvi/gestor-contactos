@@ -1,0 +1,37 @@
+<section class="detail-panel" aria-live="polite">
+  <header class="detail-header">
+    <p class="eyebrow">Detalle seleccionado</p>
+    <h3>{{ contact.name }}</h3>
+  </header>
+
+  <dl class="detail-grid">
+    <div>
+      <dt>Correo</dt>
+      <dd>{{ contact.email }}</dd>
+    </div>
+    <div>
+      <dt>Telefono</dt>
+      <dd>{{ contact.phone }}</dd>
+    </div>
+    <div>
+      <dt>Ciudad</dt>
+      <dd>{{ contact.city }}</dd>
+    </div>
+    <div>
+      <dt>Estado</dt>
+      <dd>
+        <span class="status" [class]="'status ' + statusClass[contact.status]">
+          {{ contact.status | contactStatusLabel }}
+        </span>
+      </dd>
+    </div>
+    <div>
+      <dt>Favorito</dt>
+      <dd>{{ contact.favorite ? 'Si' : 'No' }}</dd>
+    </div>
+    <div>
+      <dt>ID</dt>
+      <dd>#{{ contact.id }}</dd>
+    </div>
+  </dl>
+</section>

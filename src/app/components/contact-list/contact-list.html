@@ -5,19 +5,23 @@
     <p class="subtitle">Organiza tu red, marca favoritos y actualiza estados al instante.</p>
   </header>
 
-  <div *ngIf="contacts.length === 0; else listTemplate" class="empty-state">
-    <p>No hay contactos disponibles en este momento.</p>
-  </div>
-
-  <ng-template #listTemplate>
+  @if (contacts.length === 0) {
+    <div class="empty-state">
+      <p>No hay contactos disponibles en este momento.</p>
+    </div>
+  } @else {
     <p class="counter">Total: {{ contacts.length }} contactos</p>
     <div class="grid-container">
-      <app-contact-card
-        *ngFor="let c of contacts"
-        [contact]="c"
-        (favoriteToggled)="toggleFavorite($event)"
-        (statusToggled)="toggleStatus($event)"
-      ></app-contact-card>
+      @for (contact of contacts; track contact.id) {
+        <app-contact-card
+          [class.selected-card]="selectedContact.id === contact.id"
+          [contact]="contact"
+          (favoriteToggled)="toggleFavorite($event)"
+          (statusToggled)="toggleStatus($event)"
+          (click)="selectContact(contact)"
+        ></app-contact-card>
+      }
     </div>
-  </ng-template>
+    <app-contact-detail [contact]="selectedContact"></app-contact-detail>
+  }
 </div>
